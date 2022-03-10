@@ -386,11 +386,6 @@
               <FilePath>../Src/stm32f4xx_hal_msp.c</FilePath>
             </File>
             <File>
-              <FileName>main.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../Src/main.c</FilePath>
-            </File>
-            <File>
               <FileName>cdisplaybased.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\Src\cdisplaybased.cpp</FilePath>
@@ -469,6 +464,31 @@
               <FileName>madgwickahrs.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\Src\madgwickahrs.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>cmathprocessing.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Src\cmathprocessing.h</FilePath>
+            </File>
+            <File>
+              <FileName>cmathprocessing.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Src\cmathprocessing.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>lffilter.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Src\lffilter.h</FilePath>
+            </File>
+            <File>
+              <FileName>lffilter.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Src\lffilter.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>main.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Src\main.cpp</FilePath>
             </File>
           </Files>
         </Group>
