@@ -329,3 +329,27 @@ int16_t MPU6050_GetGyroZ(void)
  int16_t data=MPU6050_GetInt16Value(MPU6050_RA_GYRO_ZOUT_H,MPU6050_RA_GYRO_ZOUT_L);//считываем данные 
  return(data);
 }
+
+//----------------------------------------------------------------------------------------------------
+//считать показания гироскопов, акселерометров и температуры блоком
+//----------------------------------------------------------------------------------------------------
+void MPU6050_ReadAll(int16_t &gx,int16_t &gy,int16_t &gz,int16_t &ax,int16_t &ay,int16_t &az,int16_t &temper)
+{
+ static const uint8_t BUFFER_SIZE=14;	
+ uint8_t buffer[BUFFER_SIZE];	
+ //с 0x3B 14 следующих регистров содержат данные измерения модуля
+ I2C_ReadBuffer(MPU6050_ADR,MPU6050_RA_ACCEL_XOUT_H,buffer,BUFFER_SIZE);
+	
+ ax=(int16_t)((((uint16_t)buffer[0])<<8)|(uint16_t)(buffer[1]));
+ ay=(int16_t)((((uint16_t)buffer[2])<<8)|(uint16_t)(buffer[3]));
+ az=(int16_t)((((uint16_t)buffer[4])<<8)|(uint16_t)(buffer[5]));
+
+ temper=(int16_t)((((uint16_t)buffer[6])<<8)|(uint16_t)(buffer[7]));
+
+ gx=(int16_t)((((uint16_t)buffer[8])<<8)|(uint16_t)(buffer[9]));
+ gy=(int16_t)((((uint16_t)buffer[10])<<8)|(uint16_t)(buffer[11]));
+ gz=(int16_t)((((uint16_t)buffer[12])<<8)|(uint16_t)(buffer[13]));	
+ 
+ temper+=12412;
+ temper=temper/34;//0.1 градус цельсия 
+}

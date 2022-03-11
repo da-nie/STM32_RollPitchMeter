@@ -46,17 +46,18 @@ class CDisplayStandardLibrary
   ~CDisplayStandardLibrary();
  public:
   //-открытые функции-----------------------------------------------------------------------------------
-  void PutSymbol(int32_t x,int32_t y,char symbol,uint16_t color);//вывод символа в позицию
-  void PutString(int32_t x,int32_t y,const char *string,uint16_t color);//вывод строчки в позицию
-  void Print(const char *string,uint16_t color);//вывести текст в текущую позицию
+  void PutSymbol(int32_t x,int32_t y,char symbol,uint16_t color,uint8_t size=1);//вывод символа в позицию
+  void PutString(int32_t x,int32_t y,const char *string,uint16_t color,uint8_t size=1);//вывод строчки в позицию
+  void Print(const char *string,uint16_t color,uint8_t size=1);//вывести текст в текущую позицию
   void Clear(uint16_t color);//сбросить текущую позицию и очистить дисплей 
   void DrawLine(int32_t x1,int32_t y1,int32_t x2,int32_t y2,uint16_t color);//нарисовать линию
   void FillRectangle(int32_t x1,int32_t y1,int32_t x2,int32_t y2,uint16_t color);//нарисовать закрашенный прямоугольник
   void FillTriangle(int32_t ax,int32_t ay,int32_t bx,int32_t by,int32_t cx,int32_t cy,uint16_t color);//нарисовать закрашенный треугольник
+  void DrawCircle(int32_t xc,int32_t yc,int32_t radius,uint16_t color);//нарисовать окружность 
  private:
   //-закрытые функции-----------------------------------------------------------------------------------  
-  void PutSymbolVertical(int32_t x,int32_t y,uint8_t symbol,uint16_t color);//вывод символа в позицию в вертикальной ориентации
-  void PutSymbolHorizontal(int32_t x,int32_t y,uint8_t symbol,uint16_t color);//вывод символа в позицию в горизонтальной ориентации
+  void PutSymbolVertical(int32_t x,int32_t y,uint8_t symbol,uint16_t color,uint8_t size=1);//вывод символа в позицию в вертикальной ориентации
+  void PutSymbolHorizontal(int32_t x,int32_t y,uint8_t symbol,uint16_t color,uint8_t size=1);//вывод символа в позицию в горизонтальной ориентации
   void DrawTriangleLine(int32_t y,int32_t x1,int32_t x2,uint16_t color);//отрисовка линии треугольника
 };
 

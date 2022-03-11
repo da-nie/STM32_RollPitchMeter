@@ -271,17 +271,25 @@ CDisplayStandardLibrary::~CDisplayStandardLibrary()
 //----------------------------------------------------------------------------------------------------
 //вывод символа в позицию в вертикальной ориентации
 //----------------------------------------------------------------------------------------------------
-void CDisplayStandardLibrary::PutSymbolVertical(int32_t x,int32_t y,uint8_t symbol,uint16_t color)
-{
+void CDisplayStandardLibrary::PutSymbolVertical(int32_t x,int32_t y,uint8_t symbol,uint16_t color,uint8_t size)
+{ 
+ int32_t out_y=y;
  for(int32_t ys=0;ys<FONT_HEIGHT;ys++)
  {
   uint8_t byte=Font8x14[symbol][ys];
-  uint8_t mask=128;
-  for(int32_t xs=0;xs<FONT_WIDTH;xs++,mask>>=1)
-  {   
-   if (x+xs<0 || x+xs>=iDisplay_Ptr->DISPLAY_WIDTH) continue;
-   if (y+ys<0 || y+ys>=iDisplay_Ptr->DISPLAY_HEIGHT) continue;
-   if (byte&mask) iDisplay_Ptr->PutPixel(x+xs,y+ys,color);
+  for(int8_t ry=0;ry<size;ry++,out_y++)
+	{
+   if (out_y<0 || out_y>=iDisplay_Ptr->DISPLAY_HEIGHT) continue;
+	 uint8_t mask=128;
+   int32_t out_x=x;
+   for(int32_t xs=0;xs<FONT_WIDTH;xs++,mask>>=1)
+   {   
+    for(int8_t rx=0;rx<size;rx++,out_x++)
+	  {
+		 if (out_x<0 || out_x>=iDisplay_Ptr->DISPLAY_WIDTH) continue;
+     if (byte&mask) iDisplay_Ptr->PutPixel(out_x,out_y,color);
+		}
+   }
   }
  }
 }
@@ -289,17 +297,25 @@ void CDisplayStandardLibrary::PutSymbolVertical(int32_t x,int32_t y,uint8_t symb
 //----------------------------------------------------------------------------------------------------
 //вывод символа в позицию в горизонтальной ориентации
 //----------------------------------------------------------------------------------------------------
-void CDisplayStandardLibrary::PutSymbolHorizontal(int32_t x,int32_t y,uint8_t symbol,uint16_t color)
+void CDisplayStandardLibrary::PutSymbolHorizontal(int32_t x,int32_t y,uint8_t symbol,uint16_t color,uint8_t size)
 {
+ int32_t out_y=iDisplay_Ptr->DISPLAY_WIDTH-y;
  for(int32_t ys=0;ys<FONT_HEIGHT;ys++)
  {
   uint8_t byte=Font8x14[symbol][ys];
-  uint8_t mask=128;
-  for(int32_t xs=0;xs<FONT_WIDTH;xs++,mask>>=1)
-  {
-   if (x+xs<0 || x+xs>=iDisplay_Ptr->DISPLAY_HEIGHT) continue;
-   if (y+ys<0 || y+ys>=iDisplay_Ptr->DISPLAY_WIDTH) continue;
-   if (byte&mask) iDisplay_Ptr->PutPixel(iDisplay_Ptr->DISPLAY_WIDTH-(y+ys),x+xs,color);
+  for(int8_t ry=0;ry<size;ry++,out_y--)
+	{
+   if (out_y<0 || out_y>=iDisplay_Ptr->DISPLAY_WIDTH) continue;
+	 uint8_t mask=128;
+   int32_t out_x=x;
+   for(int32_t xs=0;xs<FONT_WIDTH;xs++,mask>>=1)
+   {   
+    for(int8_t rx=0;rx<size;rx++,out_x++)
+	  {
+		 if (out_x<0 || out_x>=iDisplay_Ptr->DISPLAY_HEIGHT) continue;
+     if (byte&mask) iDisplay_Ptr->PutPixel(out_y,out_x,color);
+		}
+   }
   }
  }
 }
@@ -327,26 +343,26 @@ void CDisplayStandardLibrary::DrawTriangleLine(int32_t y,int32_t x1,int32_t x2,u
 //----------------------------------------------------------------------------------------------------
 //вывод символа в позицию
 //----------------------------------------------------------------------------------------------------
-void CDisplayStandardLibrary::PutSymbol(int32_t x,int32_t y,char symbol,uint16_t color)
+void CDisplayStandardLibrary::PutSymbol(int32_t x,int32_t y,char symbol,uint16_t color,uint8_t size)
 {
  uint8_t s=(uint8_t)(symbol);
  if (s<=32) return;
  s-=32;
  if (s>223) return;
  //рисуем символ
- if (OrientationVertical==true) PutSymbolVertical(x,y,s,color);	
-                           else PutSymbolHorizontal(x,y,s,color);	
+ if (OrientationVertical==true) PutSymbolVertical(x,y,s,color,size);	
+                           else PutSymbolHorizontal(x,y,s,color,size);	
 }
 //----------------------------------------------------------------------------------------------------
 //вывод строчки в позицию
 //----------------------------------------------------------------------------------------------------
-void CDisplayStandardLibrary::PutString(int32_t x,int32_t y,const char *string,uint16_t color)
+void CDisplayStandardLibrary::PutString(int32_t x,int32_t y,const char *string,uint16_t color,uint8_t size)
 {
  uint32_t s=0;	
  while((*string)!=0)
  {
-  PutSymbol(x,y,*string,color);
-	x+=FONT_WIDTH;
+  PutSymbol(x,y,*string,color,size);
+	x+=FONT_WIDTH*size;
 	string++;
 	s++;
  }
@@ -354,18 +370,18 @@ void CDisplayStandardLibrary::PutString(int32_t x,int32_t y,const char *string,u
 //----------------------------------------------------------------------------------------------------
 //вывести текст в текущую позицию
 //----------------------------------------------------------------------------------------------------
-void CDisplayStandardLibrary::Print(const char *string,uint16_t color)
+void CDisplayStandardLibrary::Print(const char *string,uint16_t color,uint8_t size)
 {
  if (OrientationVertical==true)
  {
-	if (PrintYPosition+FONT_HEIGHT>=iDisplay_Ptr->DISPLAY_HEIGHT) Clear(ClearColor);
+	if (PrintYPosition+FONT_HEIGHT*size>=iDisplay_Ptr->DISPLAY_HEIGHT) Clear(ClearColor);
  }
  else
  {
-	if (PrintYPosition+FONT_HEIGHT>=iDisplay_Ptr->DISPLAY_WIDTH) Clear(ClearColor);
+	if (PrintYPosition+FONT_HEIGHT*size>=iDisplay_Ptr->DISPLAY_WIDTH) Clear(ClearColor);
  }
- PutString(0,PrintYPosition,string,color);
- PrintYPosition+=FONT_HEIGHT;
+ PutString(0,PrintYPosition,string,color,size);
+ PrintYPosition+=FONT_HEIGHT*size;
 }
 //----------------------------------------------------------------------------------------------------
 //сбросить текущую позицию и очистить дисплей 
@@ -401,7 +417,7 @@ void CDisplayStandardLibrary::DrawLine(int32_t x1,int32_t y1,int32_t x2,int32_t 
   int32_t d1=dy<<1;
   int32_t d2=(dy-dx)<<1;
 	 
-  if (x1>=0 && x1<iDisplay_Ptr->DISPLAY_HEIGHT && y1>=0 && y1<iDisplay_Ptr->DISPLAY_WIDTH) iDisplay_Ptr->PutPixel(iDisplay_Ptr->DISPLAY_WIDTH-1-y1,x1,color);
+  iDisplay_Ptr->PutPixel(iDisplay_Ptr->DISPLAY_WIDTH-1-y1,x1,color);
 	
   for(int32_t x=x1+sx,y=y1,i=1;i<=dx;i++,x+=sx)
   {
@@ -411,7 +427,7 @@ void CDisplayStandardLibrary::DrawLine(int32_t x1,int32_t y1,int32_t x2,int32_t 
     y+=sy;
    }
    else d+=d1;
-	 if (x>=0 && x<iDisplay_Ptr->DISPLAY_HEIGHT && y>=0 && y<iDisplay_Ptr->DISPLAY_WIDTH) iDisplay_Ptr->PutPixel(iDisplay_Ptr->DISPLAY_WIDTH-1-y,x,color);
+	 iDisplay_Ptr->PutPixel(iDisplay_Ptr->DISPLAY_WIDTH-1-y,x,color);
   }
  }
  else
@@ -419,7 +435,7 @@ void CDisplayStandardLibrary::DrawLine(int32_t x1,int32_t y1,int32_t x2,int32_t 
   int32_t d=(dx<<1)-dy;
   int32_t d1=dx<<1;
   int32_t d2=(dx-dy)<<1;
-  if (x1>=0 && x1<iDisplay_Ptr->DISPLAY_HEIGHT && y1>=0 && y1<iDisplay_Ptr->DISPLAY_WIDTH) iDisplay_Ptr->PutPixel(iDisplay_Ptr->DISPLAY_WIDTH-1-y1,x1,color);
+  iDisplay_Ptr->PutPixel(iDisplay_Ptr->DISPLAY_WIDTH-1-y1,x1,color);
   for(int32_t x=x1,y=y1+sy,i=1;i<=dy;i++,y+=sy)
   {
    if (d>0)
@@ -428,7 +444,7 @@ void CDisplayStandardLibrary::DrawLine(int32_t x1,int32_t y1,int32_t x2,int32_t 
     x+=sx;
    }
    else d+=d1;
-	 if (x>=0 && x<iDisplay_Ptr->DISPLAY_HEIGHT && y>=0 && y<iDisplay_Ptr->DISPLAY_WIDTH) iDisplay_Ptr->PutPixel(iDisplay_Ptr->DISPLAY_WIDTH-1-y,x,color);
+	 iDisplay_Ptr->PutPixel(iDisplay_Ptr->DISPLAY_WIDTH-1-y,x,color);
   }
  }
 }
@@ -465,7 +481,7 @@ void CDisplayStandardLibrary::FillRectangle(int32_t x1,int32_t y1,int32_t x2,int
  {
   for(int32_t x=x1;x<=x2;x++) 
 	{
-	 if (x>=0 && x<iDisplay_Ptr->DISPLAY_HEIGHT && y>=0 && y<iDisplay_Ptr->DISPLAY_WIDTH) iDisplay_Ptr->PutPixel(iDisplay_Ptr->DISPLAY_WIDTH-1-y,x,color);
+	 iDisplay_Ptr->PutPixel(iDisplay_Ptr->DISPLAY_WIDTH-1-y,x,color);
 	}
  }
 }
@@ -572,5 +588,52 @@ void CDisplayStandardLibrary::FillTriangle(int32_t ax,int32_t ay,int32_t bx,int3
   DrawTriangleLine(sy,x1,x2,color);
  }
 }
+//----------------------------------------------------------------------------------------------------
+//нарисовать окружность
+//----------------------------------------------------------------------------------------------------
+void CDisplayStandardLibrary::DrawCircle(int32_t xc,int32_t yc,int32_t radius,uint16_t color)
+{
+ int32_t x=0;
+ int32_t y=radius;
+ int32_t d=1-radius;
+ int32_t delta1=3;
+ int32_t delta2=-2*radius+5; 
+	
+ iDisplay_Ptr->PutPixel(iDisplay_Ptr->DISPLAY_WIDTH-1-(yc+y),xc+x,color);
+ iDisplay_Ptr->PutPixel(iDisplay_Ptr->DISPLAY_WIDTH-1-(yc+x),xc+y,color);
+ iDisplay_Ptr->PutPixel(iDisplay_Ptr->DISPLAY_WIDTH-1-(yc-x),xc+y,color);
+ iDisplay_Ptr->PutPixel(iDisplay_Ptr->DISPLAY_WIDTH-1-(yc-y),xc+x,color);
+ iDisplay_Ptr->PutPixel(iDisplay_Ptr->DISPLAY_WIDTH-1-(yc-y),xc-x,color);
+ iDisplay_Ptr->PutPixel(iDisplay_Ptr->DISPLAY_WIDTH-1-(yc-x),xc-y,color);
+ iDisplay_Ptr->PutPixel(iDisplay_Ptr->DISPLAY_WIDTH-1-(yc+x),xc-y,color);
+ iDisplay_Ptr->PutPixel(iDisplay_Ptr->DISPLAY_WIDTH-1-(yc+y),xc-x,color);
+ while(y>x)
+ {
+  if (d<0)
+  {
+   d+=delta1;
+   delta1+=2;
+   delta2+=2;
+   x++;
+  }
+  else
+  {
+   d+=delta2;
+   delta1+=2;
+   delta2+=4;
+   x++;
+   y--;
+  }
+  iDisplay_Ptr->PutPixel(iDisplay_Ptr->DISPLAY_WIDTH-1-(yc+y),xc+x,color);
+  iDisplay_Ptr->PutPixel(iDisplay_Ptr->DISPLAY_WIDTH-1-(yc+x),xc+y,color);
+  iDisplay_Ptr->PutPixel(iDisplay_Ptr->DISPLAY_WIDTH-1-(yc-x),xc+y,color);
+  iDisplay_Ptr->PutPixel(iDisplay_Ptr->DISPLAY_WIDTH-1-(yc-y),xc+x,color);
+  iDisplay_Ptr->PutPixel(iDisplay_Ptr->DISPLAY_WIDTH-1-(yc-y),xc-x,color);
+  iDisplay_Ptr->PutPixel(iDisplay_Ptr->DISPLAY_WIDTH-1-(yc-x),xc-y,color);
+  iDisplay_Ptr->PutPixel(iDisplay_Ptr->DISPLAY_WIDTH-1-(yc+x),xc-y,color);
+  iDisplay_Ptr->PutPixel(iDisplay_Ptr->DISPLAY_WIDTH-1-(yc+y),xc-x,color);
+ }
+}
+
 
 

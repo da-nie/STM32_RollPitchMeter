@@ -21,17 +21,65 @@ Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V2.0.18.0
 Dialog DLL:      TCM.DLL V1.14.8.0
  
 <h2>Project:</h2>
-d:\Working\ToHome\STM32_RollPitchMeter\MDK-ARM\RollPitchMeter.uvprojx
+D:\Working\ToHome\STM32_RollPitchMeter\MDK-ARM\RollPitchMeter.uvprojx
 Project File Date:  03/10/2022
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 1 (build 61)', folder: 'F:\lang\Keil_v5\ARM\ARMCC\Bin'
 Build target 'RollPitchMeter'
-compiling cmathprocessing.cpp...
 compiling main.cpp...
+..\Src\main.cpp(112): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	float s1=sin(
+_PI/180.0*(n+90));
+..\Src\main.cpp(113): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	float c1=cos(
+_PI/180.0*(n+90));   
+..\Src\main.cpp(114): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	float s2=sin(
+_PI/180.0*(n+0));
+..\Src\main.cpp(115): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	float c2=cos(
+_PI/180.0*(n+0));   
+..\Src\main.cpp(168): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	roll_x[1]=cx1+roll_len*cos(
+_PI/180.0*(-roll+90-10));   
+..\Src\main.cpp(169): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	roll_y[1]=cy1+roll_len*sin(
+_PI/180.0*(-roll+90-10));
+..\Src\main.cpp(170): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	roll_x[2]=cx1+roll_len*cos(
+_PI/180.0*(-roll+90+10));   
+..\Src\main.cpp(171): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	roll_y[2]=cy1+roll_len*sin(
+_PI/180.0*(-roll+90+10));
+..\Src\main.cpp(172): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	roll_x[3]=cx1+(r1-1)*cos(
+_PI/180.0*(-roll+90));   
+..\Src\main.cpp(173): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	roll_y[3]=cy1+(r1-1)*sin(
+_PI/180.0*(-roll+90));
+..\Src\main.cpp(198): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	pitch_x[1]=cx2+pitch_len*cos(
+_PI/180.0*(-pitch+0-10));   
+..\Src\main.cpp(199): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	pitch_y[1]=cy2+pitch_len*sin(
+_PI/180.0*(-pitch+0-10));
+..\Src\main.cpp(200): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	pitch_x[2]=cx2+pitch_len*cos(
+_PI/180.0*(-pitch+0+10));   
+..\Src\main.cpp(201): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	pitch_y[2]=cy2+pitch_len*sin(
+_PI/180.0*(-pitch+0+10));
+..\Src\main.cpp(202): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	pitch_x[3]=cx2+(r2-1)*cos(
+_PI/180.0*(-pitch+0));   
+..\Src\main.cpp(203): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	pitch_y[3]=cy2+(r2-1)*sin(
+_PI/180.0*(-pitch+0));
+..\Src\main.cpp: 16 warnings, 0 errors
 linking...
-Program Size: Code=16398 RO-data=4030 RW-data=80 ZI-data=80128  
-"RollPitchMeter\RollPitchMeter.axf" - 0 Error(s), 0 Warning(s).
+Program Size: Code=23526 RO-data=4438 RW-data=80 ZI-data=80128  
+"RollPitchMeter\RollPitchMeter.axf" - 0 Error(s), 16 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -42,7 +90,7 @@ Package Vendor: ARM
    * Component: CORE Version: 4.3.0
 
 <h2>Collection of Component include folders:</h2>
-  d:\Working\ToHome\STM32_RollPitchMeter\MDK-ARM\RTE
+  D:\Working\ToHome\STM32_RollPitchMeter\MDK-ARM\RTE
   F:\lang\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include
   F:\lang\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.3.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
