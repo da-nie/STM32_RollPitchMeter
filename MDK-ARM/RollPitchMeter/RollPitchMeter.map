@@ -2818,29 +2818,29 @@ Image Symbol Table
     i.fabs                                   0x08004e6c   Section        0  fabs.o(i.fabs)
     i.free                                   0x08004e84   Section        0  malloc.o(i.free)
     i.main                                   0x08004ed4   Section        0  main.o(i.main)
-    i.malloc                                 0x08005cc4   Section        0  malloc.o(i.malloc)
-    i.sqrtf                                  0x08005d30   Section        0  sqrtf.o(i.sqrtf)
-    .constdata                               0x08005d6e   Section      204  cdisplayil9325.o(.constdata)
-    IL9325_InitList                          0x08005d6e   Data         204  cdisplayil9325.o(.constdata)
-    .constdata                               0x08005e3a   Section     3136  cdisplaystandardlibrary.o(.constdata)
-    Font8x14                                 0x08005e3a   Data        3136  cdisplaystandardlibrary.o(.constdata)
-    .constdata                               0x08006a7c   Section      124  lffilter.o(.constdata)
-    FIRCoef                                  0x08006a7c   Data         124  lffilter.o(.constdata)
-    .constdata                               0x08006af8   Section      120  main.o(.constdata)
-    .constdata                               0x08006b70   Section       16  system_stm32f4xx.o(.constdata)
-    .constdata                               0x08006b80   Section        8  system_stm32f4xx.o(.constdata)
-    .constdata                               0x08006b88   Section       48  cos_i.o(.constdata)
-    C                                        0x08006b88   Data          48  cos_i.o(.constdata)
-    .constdata                               0x08006bb8   Section      200  rred.o(.constdata)
-    pio2s                                    0x08006bb8   Data          48  rred.o(.constdata)
-    twooverpi                                0x08006be8   Data         152  rred.o(.constdata)
-    .constdata                               0x08006c80   Section       40  sin_i.o(.constdata)
-    S                                        0x08006c80   Data          40  sin_i.o(.constdata)
-    .constdata__ZTV13CDisplayBased           0x08006ca8   Section       32  cdisplaybased.o(.constdata__ZTV13CDisplayBased)
-    .constdata__ZTV14CDisplayIL9325          0x08006cc8   Section       32  cdisplayil9325.o(.constdata__ZTV14CDisplayIL9325)
-    .constdata__ZTV14CDisplayMemory          0x08006ce8   Section       32  cdisplaymemory.o(.constdata__ZTV14CDisplayMemory)
-    .init_array                              0x08006d38   Section        4  main.o(.init_array)
-    .init_array                              0x08006d3c   Section        0  cpp_init.o(.init_array)
+    i.malloc                                 0x08005ef4   Section        0  malloc.o(i.malloc)
+    i.sqrtf                                  0x08005f60   Section        0  sqrtf.o(i.sqrtf)
+    .constdata                               0x08005f9e   Section      204  cdisplayil9325.o(.constdata)
+    IL9325_InitList                          0x08005f9e   Data         204  cdisplayil9325.o(.constdata)
+    .constdata                               0x0800606a   Section     3136  cdisplaystandardlibrary.o(.constdata)
+    Font8x14                                 0x0800606a   Data        3136  cdisplaystandardlibrary.o(.constdata)
+    .constdata                               0x08006cac   Section      124  lffilter.o(.constdata)
+    FIRCoef                                  0x08006cac   Data         124  lffilter.o(.constdata)
+    .constdata                               0x08006d28   Section      120  main.o(.constdata)
+    .constdata                               0x08006da0   Section       16  system_stm32f4xx.o(.constdata)
+    .constdata                               0x08006db0   Section        8  system_stm32f4xx.o(.constdata)
+    .constdata                               0x08006db8   Section       48  cos_i.o(.constdata)
+    C                                        0x08006db8   Data          48  cos_i.o(.constdata)
+    .constdata                               0x08006de8   Section      200  rred.o(.constdata)
+    pio2s                                    0x08006de8   Data          48  rred.o(.constdata)
+    twooverpi                                0x08006e18   Data         152  rred.o(.constdata)
+    .constdata                               0x08006eb0   Section       40  sin_i.o(.constdata)
+    S                                        0x08006eb0   Data          40  sin_i.o(.constdata)
+    .constdata__ZTV13CDisplayBased           0x08006ed8   Section       32  cdisplaybased.o(.constdata__ZTV13CDisplayBased)
+    .constdata__ZTV14CDisplayIL9325          0x08006ef8   Section       32  cdisplayil9325.o(.constdata__ZTV14CDisplayIL9325)
+    .constdata__ZTV14CDisplayMemory          0x08006f18   Section       32  cdisplaymemory.o(.constdata__ZTV14CDisplayMemory)
+    .init_array                              0x08006f68   Section        4  main.o(.init_array)
+    .init_array                              0x08006f6c   Section        0  cpp_init.o(.init_array)
     .data                                    0x10000000   Section       20  madgwickahrs.o(.data)
     .data                                    0x10000014   Section       24  cmathprocessing.o(.data)
     ax0                                      0x10000014   Data           4  cmathprocessing.o(.data)
@@ -3205,18 +3205,18 @@ Image Symbol Table
     __set_errno                              0x0800455d   Thumb Code     6  errno.o(i.__set_errno)
     fabs                                     0x08004e6d   Thumb Code    24  fabs.o(i.fabs)
     free                                     0x08004e85   Thumb Code    76  malloc.o(i.free)
-    main                                     0x08004ed5   Thumb Code  3568  main.o(i.main)
-    malloc                                   0x08005cc5   Thumb Code    92  malloc.o(i.malloc)
-    sqrtf                                    0x08005d31   Thumb Code    62  sqrtf.o(i.sqrtf)
-    AHBPrescTable                            0x08006b70   Data          16  system_stm32f4xx.o(.constdata)
-    APBPrescTable                            0x08006b80   Data           8  system_stm32f4xx.o(.constdata)
-    vtable for CDisplayBased                 0x08006ca8   Data          32  cdisplaybased.o(.constdata__ZTV13CDisplayBased)
-    vtable for CDisplayIL9325                0x08006cc8   Data          32  cdisplayil9325.o(.constdata__ZTV14CDisplayIL9325)
-    vtable for CDisplayMemory                0x08006ce8   Data          32  cdisplaymemory.o(.constdata__ZTV14CDisplayMemory)
-    Region$$Table$$Base                      0x08006d08   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08006d38   Number         0  anon$$obj.o(Region$$Table)
-    SHT$$INIT_ARRAY$$Base                    0x08006d38   Number         0  main.o(.init_array)
-    SHT$$INIT_ARRAY$$Limit                   0x08006d3c   Number         0  cpp_init.o(.init_array)
+    main                                     0x08004ed5   Thumb Code  4122  main.o(i.main)
+    malloc                                   0x08005ef5   Thumb Code    92  malloc.o(i.malloc)
+    sqrtf                                    0x08005f61   Thumb Code    62  sqrtf.o(i.sqrtf)
+    AHBPrescTable                            0x08006da0   Data          16  system_stm32f4xx.o(.constdata)
+    APBPrescTable                            0x08006db0   Data           8  system_stm32f4xx.o(.constdata)
+    vtable for CDisplayBased                 0x08006ed8   Data          32  cdisplaybased.o(.constdata__ZTV13CDisplayBased)
+    vtable for CDisplayIL9325                0x08006ef8   Data          32  cdisplayil9325.o(.constdata__ZTV14CDisplayIL9325)
+    vtable for CDisplayMemory                0x08006f18   Data          32  cdisplaymemory.o(.constdata__ZTV14CDisplayMemory)
+    Region$$Table$$Base                      0x08006f38   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08006f68   Number         0  anon$$obj.o(Region$$Table)
+    SHT$$INIT_ARRAY$$Base                    0x08006f68   Number         0  main.o(.init_array)
+    SHT$$INIT_ARRAY$$Limit                   0x08006f6c   Number         0  cpp_init.o(.init_array)
     beta                                     0x10000000   Data           4  madgwickahrs.o(.data)
     q0                                       0x10000004   Data           4  madgwickahrs.o(.data)
     q1                                       0x10000008   Data           4  madgwickahrs.o(.data)
@@ -3246,9 +3246,9 @@ Memory Map of the image
 
   Image Entry point : 0x08000189
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00006d8c, Max: 0x00100000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00006fbc, Max: 0x00100000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x00006d3c, Max: 0x00100000, ABSOLUTE)
+    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x00006f6c, Max: 0x00100000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -3469,25 +3469,25 @@ Memory Map of the image
     0x08004e62   0x0000000a   Code   RO         1246    i._sputc            mc_w.l(printfa.o)
     0x08004e6c   0x00000018   Code   RO         1352    i.fabs              m_wm.l(fabs.o)
     0x08004e84   0x00000050   Code   RO         1312    i.free              mc_w.l(malloc.o)
-    0x08004ed4   0x00000df0   Code   RO          233    i.main              main.o
-    0x08005cc4   0x0000006c   Code   RO         1313    i.malloc            mc_w.l(malloc.o)
-    0x08005d30   0x0000003e   Code   RO         1107    i.sqrtf             m_wm.l(sqrtf.o)
-    0x08005d6e   0x000000cc   Data   RO           98    .constdata          cdisplayil9325.o
-    0x08005e3a   0x00000c40   Data   RO          136    .constdata          cdisplaystandardlibrary.o
-    0x08006a7a   0x00000002   PAD
-    0x08006a7c   0x0000007c   Data   RO          223    .constdata          lffilter.o
-    0x08006af8   0x00000078   Data   RO          242    .constdata          main.o
-    0x08006b70   0x00000010   Data   RO          253    .constdata          system_stm32f4xx.o
-    0x08006b80   0x00000008   Data   RO          254    .constdata          system_stm32f4xx.o
-    0x08006b88   0x00000030   Data   RO         1269    .constdata          m_wm.l(cos_i.o)
-    0x08006bb8   0x000000c8   Data   RO         1287    .constdata          m_wm.l(rred.o)
-    0x08006c80   0x00000028   Data   RO         1289    .constdata          m_wm.l(sin_i.o)
-    0x08006ca8   0x00000020   Data   RO           48    .constdata__ZTV13CDisplayBased  cdisplaybased.o
-    0x08006cc8   0x00000020   Data   RO          100    .constdata__ZTV14CDisplayIL9325  cdisplayil9325.o
-    0x08006ce8   0x00000020   Data   RO          151    .constdata__ZTV14CDisplayMemory  cdisplaymemory.o
-    0x08006d08   0x00000030   Data   RO         1369    Region$$Table       anon$$obj.o
-    0x08006d38   0x00000004   Data   RO          244    .init_array         main.o
-    0x08006d3c   0x00000000   Data   RO         1249    .init_array         mc_w.l(cpp_init.o)
+    0x08004ed4   0x00001020   Code   RO          233    i.main              main.o
+    0x08005ef4   0x0000006c   Code   RO         1313    i.malloc            mc_w.l(malloc.o)
+    0x08005f60   0x0000003e   Code   RO         1107    i.sqrtf             m_wm.l(sqrtf.o)
+    0x08005f9e   0x000000cc   Data   RO           98    .constdata          cdisplayil9325.o
+    0x0800606a   0x00000c40   Data   RO          136    .constdata          cdisplaystandardlibrary.o
+    0x08006caa   0x00000002   PAD
+    0x08006cac   0x0000007c   Data   RO          223    .constdata          lffilter.o
+    0x08006d28   0x00000078   Data   RO          242    .constdata          main.o
+    0x08006da0   0x00000010   Data   RO          253    .constdata          system_stm32f4xx.o
+    0x08006db0   0x00000008   Data   RO          254    .constdata          system_stm32f4xx.o
+    0x08006db8   0x00000030   Data   RO         1269    .constdata          m_wm.l(cos_i.o)
+    0x08006de8   0x000000c8   Data   RO         1287    .constdata          m_wm.l(rred.o)
+    0x08006eb0   0x00000028   Data   RO         1289    .constdata          m_wm.l(sin_i.o)
+    0x08006ed8   0x00000020   Data   RO           48    .constdata__ZTV13CDisplayBased  cdisplaybased.o
+    0x08006ef8   0x00000020   Data   RO          100    .constdata__ZTV14CDisplayIL9325  cdisplayil9325.o
+    0x08006f18   0x00000020   Data   RO          151    .constdata__ZTV14CDisplayMemory  cdisplaymemory.o
+    0x08006f38   0x00000030   Data   RO         1369    Region$$Table       anon$$obj.o
+    0x08006f68   0x00000004   Data   RO          244    .init_array         main.o
+    0x08006f6c   0x00000000   Data   RO         1249    .init_array         mc_w.l(cpp_init.o)
 
 
     Execution Region RW_IRAM2 (Base: 0x10000000, Size: 0x00000d50, Max: 0x00010000, ABSOLUTE)
@@ -3533,7 +3533,7 @@ Image component sizes
        240         26          0          0         84          0   i2c.o
        240         36        124          0        372          0   lffilter.o
       1012         24          0         20          0          0   madgwickahrs.o
-      4016        200        124         12        308          0   main.o
+      4576        206        124         12        308          0   main.o
        474          0          0          0          0          0   mpu6050.o
         36          8        392          0       2560          0   startup_stm32f407xx.o
        148         22          0          4          0          0   stm32f4xx_hal.o
@@ -3548,7 +3548,7 @@ Image component sizes
         84         18         24          4          0          0   system_stm32f4xx.o
 
     ----------------------------------------------------------------------
-     15538        732       4150         64      80128          0   Object Totals
+     16098        738       4150         64      80128          0   Object Totals
          0          0         48          0          0          0   (incl. Generated)
         30          0          2          0          4          0   (incl. Padding)
 
@@ -3637,15 +3637,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     23526       1290       4438         80      80128          0   Grand Totals
-     23526       1290       4438         80      80128          0   ELF Image Totals
-     23526       1290       4438         80          0          0   ROM Totals
+     24086       1296       4438         80      80128          0   Grand Totals
+     24086       1296       4438         80      80128          0   ELF Image Totals
+     24086       1296       4438         80          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                27964 (  27.31kB)
+    Total RO  Size (Code + RO Data)                28524 (  27.86kB)
     Total RW  Size (RW Data + ZI Data)             80208 (  78.33kB)
-    Total ROM Size (Code + RO Data + RW Data)      28044 (  27.39kB)
+    Total ROM Size (Code + RO Data + RW Data)      28604 (  27.93kB)
 
 ==============================================================================
 

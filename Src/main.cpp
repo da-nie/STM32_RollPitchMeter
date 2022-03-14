@@ -121,7 +121,7 @@ int main(void)
 	 color=IDisplay::COLOR_MAGENTA;
 	 int8_t v=n;
 	 if (v<0) v=-v;		
-	 if (v==0 || v==20 || v==40 || v==60 || v==90)
+	 if (v==0 || v==30 || v==60 || v==90)
 	 {
  	  char str[25];
     sprintf(str,"%i",v);
@@ -171,9 +171,17 @@ int main(void)
 	roll_y[2]=cy1+roll_len*sin(M_PI/180.0*(-roll+90+10));
 	roll_x[3]=cx1+(r1-1)*cos(M_PI/180.0*(-roll+90));   
 	roll_y[3]=cy1+(r1-1)*sin(M_PI/180.0*(-roll+90));
-	 
-	cDisplayStandardLibrary.FillTriangle(roll_x[0],roll_y[0],roll_x[1],roll_y[1],roll_x[2],roll_y[2],IDisplay::COLOR_YELLOW); 
+
+  cDisplayStandardLibrary.FillTriangle(roll_x[0],roll_y[0],roll_x[1],roll_y[1],roll_x[2],roll_y[2],IDisplay::COLOR_YELLOW); 
 	cDisplayStandardLibrary.FillTriangle(roll_x[1],roll_y[1],roll_x[2],roll_y[2],roll_x[3],roll_y[3],IDisplay::COLOR_YELLOW); 	 
+	 
+	float roll_const_x[2];
+	float roll_const_y[2];
+	roll_const_x[0]=cx1;
+	roll_const_y[0]=cy1;
+	roll_const_x[1]=cx1+r1*cos(M_PI/180.0*(-roll_const+90));
+	roll_const_y[1]=cy1+r1*sin(M_PI/180.0*(-roll_const+90));
+	cDisplayStandardLibrary.DrawLine(roll_const_x[0],roll_const_y[0],roll_const_x[1],roll_const_y[1],IDisplay::COLOR_GREEN);
 	 
 
 	float pitch_y[4];
@@ -204,7 +212,15 @@ int main(void)
 	 
 	cDisplayStandardLibrary.FillTriangle(pitch_x[0],pitch_y[0],pitch_x[1],pitch_y[1],pitch_x[2],pitch_y[2],IDisplay::COLOR_YELLOW); 
 	cDisplayStandardLibrary.FillTriangle(pitch_x[1],pitch_y[1],pitch_x[2],pitch_y[2],pitch_x[3],pitch_y[3],IDisplay::COLOR_YELLOW); 	 
-	 
+
+	float pitch_const_x[2];
+	float pitch_const_y[2];
+	pitch_const_x[0]=cx2;
+	pitch_const_y[0]=cy2;
+	pitch_const_x[1]=cx2+r2*cos(M_PI/180.0*(-pitch_const+0));
+	pitch_const_y[1]=cy2+r2*sin(M_PI/180.0*(-pitch_const+0));
+	cDisplayStandardLibrary.DrawLine(pitch_const_x[0],pitch_const_y[0],pitch_const_x[1],pitch_const_y[1],IDisplay::COLOR_GREEN);
+
 	char str_roll[10];
 	sprintf(str_roll,"%.1f",roll);
   cDisplayStandardLibrary.PutString((160-strlen(str_roll)*CDisplayStandardLibrary::FONT_WIDTH*2)/2,CDisplayStandardLibrary::FONT_HEIGHT*2,str_roll,IDisplay::COLOR_CYAN,2);
@@ -281,6 +297,9 @@ int main(void)
   cDisplayStandardLibrary.PutString(160,CDisplayStandardLibrary::FONT_HEIGHT*4,str_pitch_const,IDisplay::COLOR_BLACK,1);
   cDisplayStandardLibrary.PutString(160+80,CDisplayStandardLibrary::FONT_HEIGHT*4,str_pitch_amplitude,IDisplay::COLOR_BLACK,1);
   cDisplayStandardLibrary.PutString(160,CDisplayStandardLibrary::FONT_HEIGHT*5,str_pitch_period,IDisplay::COLOR_BLACK,1);
+	
+	cDisplayStandardLibrary.DrawLine(roll_const_x[0],roll_const_y[0],roll_const_x[1],roll_const_y[1],IDisplay::COLOR_BLACK);
+	cDisplayStandardLibrary.DrawLine(pitch_const_x[0],pitch_const_y[0],pitch_const_x[1],pitch_const_y[1],IDisplay::COLOR_BLACK);
  } 
 }
 
