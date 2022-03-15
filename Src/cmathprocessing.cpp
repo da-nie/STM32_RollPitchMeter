@@ -114,7 +114,7 @@ float CMathProcessing::ConvertTemper(int16_t raw)
 //----------------------------------------------------------------------------------------------------
 //поиск минимума и максимума колебаний
 //----------------------------------------------------------------------------------------------------
-void CMathProcessing::FindMaxMinOscillation(const float &angle,SChannel &sChannel_Current,size_t tick,float dt)
+void CMathProcessing::FindMaxMinOscillation(const float angle,const float static_angle,SChannel &sChannel_Current,size_t tick,float dt)
 {
  //считается, что колебания проходят через ноль с допуском на минимальные колебания.
  //при переходе через ноль начинает обновляться значение минимума или максимума (в зависимости от половины,куда мы попадаем).
@@ -123,7 +123,7 @@ void CMathProcessing::FindMaxMinOscillation(const float &angle,SChannel &sChanne
 	
  static const float MIN_ANGLE_OSC=0.5f;//минимальный допуск по углу качания	
 
- if (angle<-MIN_ANGLE_OSC)
+ if (angle<static_angle-MIN_ANGLE_OSC)
  {
   if (angle<sChannel_Current.CMin) //обновляем минимум
   {
@@ -142,7 +142,7 @@ void CMathProcessing::FindMaxMinOscillation(const float &angle,SChannel &sChanne
 	sChannel_Current.ChangeCMax=false;
 	sChannel_Current.ChangeCMin=true;
  }
- if (angle>MIN_ANGLE_OSC)
+ if (angle>static_angle+MIN_ANGLE_OSC)
  {
   if (angle>sChannel_Current.CMax)//обновляем максимум
   {
@@ -175,7 +175,7 @@ void CMathProcessing::FindMoveParam(size_t tick,float dt)
  {
 	const float &angle=sValue.CurrentAngle[n];
 	SChannel &sChannel_Current=sChannel[n];
-  FindMaxMinOscillation(angle,sChannel_Current,tick,dt);
+  FindMaxMinOscillation(angle,sValue.ConstAngle[n]*0,sChannel_Current,tick,dt);
 	//обновляем показания
   if (sChannel_Current.CounterMax==0 || sChannel_Current.CounterMin==0)
   {

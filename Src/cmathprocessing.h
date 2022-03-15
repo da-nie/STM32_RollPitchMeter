@@ -98,7 +98,7 @@ class CMathProcessing
   static float ConvertGyro(int16_t raw);//конвертировать показания гироскопа в градусы в секунду
   static float ConvertAcs(int16_t raw);//конвертировать показания акселерометра в м/с^2
   static float ConvertTemper(int16_t raw);//конвертировать показания температуры в градусы Цельсия
-  void FindMaxMinOscillation(const float &angle,SChannel &sChannel_Current,size_t tick,float dt);//поиск минимума и максимума колебаний
+  void FindMaxMinOscillation(const float angle,const float static_angle,SChannel &sChannel_Current,size_t tick,float dt);//поиск минимума и максимума колебаний
   void FindMoveParam(size_t tick,float dt);//поиск параметров движения
 };
 

@@ -93,7 +93,8 @@ int main(void)
  d=d/1000.0; 
 	*/
 	
- //рисуем интерфейс	
+ //рисуем интерфейс
+ 
  cDisplayStandardLibrary.Clear(IDisplay::COLOR_BLACK);
 
  int32_t r1=50; 
@@ -135,13 +136,15 @@ int main(void)
 	cDisplayStandardLibrary.DrawLine(cx1+(r1+len)*c1,cy1+(r1+len)*s1,cx1+(r1-0)*c1,cy1+(r1-0)*s1,color);
 	cDisplayStandardLibrary.DrawLine(cx2+(r2+len)*c2,cy2+(r2+len)*s2,cx2+(r2-0)*c2,cy2+(r2-0)*s2,color);		
  }
- cDisplayStandardLibrary.PutString((160-4*CDisplayStandardLibrary::FONT_WIDTH*2)/2,0,"КРЕН",IDisplay::COLOR_YELLOW,2);
- cDisplayStandardLibrary.PutString(160+(160-9*CDisplayStandardLibrary::FONT_WIDTH*2)/2,0,"ДИФФЕРЕНТ",IDisplay::COLOR_YELLOW,2);
+ cDisplayStandardLibrary.PutString((160-4*CDisplayStandardLibrary::FONT_WIDTH*2)/2,0,"КРЕН",IDisplay::COLOR_WHITE,2);
+ cDisplayStandardLibrary.PutString(160+(160-9*CDisplayStandardLibrary::FONT_WIDTH*2)/2,0,"ДИФФЕРЕНТ",IDisplay::COLOR_WHITE,2);
  
  while(1)
  {		  
 	CMathProcessing::SValue sValue;
+  __HAL_TIM_DISABLE_IT(&htim1,TIM_IT_UPDATE);
   sValue=cMathProcessing.GetValue();	 
+	__HAL_TIM_ENABLE_IT(&htim1,TIM_IT_UPDATE);
 	
   //рисуем текущие углы по крену и тангажу
 	float roll_y[4];
@@ -181,9 +184,8 @@ int main(void)
 	roll_const_y[0]=cy1;
 	roll_const_x[1]=cx1+r1*cos(M_PI/180.0*(-roll_const+90));
 	roll_const_y[1]=cy1+r1*sin(M_PI/180.0*(-roll_const+90));
-	cDisplayStandardLibrary.DrawLine(roll_const_x[0],roll_const_y[0],roll_const_x[1],roll_const_y[1],IDisplay::COLOR_GREEN);
+	cDisplayStandardLibrary.DrawLine(roll_const_x[0],roll_const_y[0],roll_const_x[1],roll_const_y[1],IDisplay::COLOR_CYAN);
 	 
-
 	float pitch_y[4];
 	float pitch_x[4];
   float pitch=sValue.CurrentAngle[1];
@@ -219,7 +221,7 @@ int main(void)
 	pitch_const_y[0]=cy2;
 	pitch_const_x[1]=cx2+r2*cos(M_PI/180.0*(-pitch_const+0));
 	pitch_const_y[1]=cy2+r2*sin(M_PI/180.0*(-pitch_const+0));
-	cDisplayStandardLibrary.DrawLine(pitch_const_x[0],pitch_const_y[0],pitch_const_x[1],pitch_const_y[1],IDisplay::COLOR_GREEN);
+	cDisplayStandardLibrary.DrawLine(pitch_const_x[0],pitch_const_y[0],pitch_const_x[1],pitch_const_y[1],IDisplay::COLOR_CYAN);
 
 	char str_roll[10];
 	sprintf(str_roll,"%.1f",roll);
